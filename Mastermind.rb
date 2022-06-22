@@ -6,6 +6,7 @@ class Mastermind
   @@pattern = a
   private
   def initialize
+    puts "Welcome to MasterMind, you need to guess what is the pattern that i have, if your guess is correct in less than 9 TURNS , YOU WIN"
     @guess
     p @@pattern
     start
@@ -13,24 +14,19 @@ class Mastermind
   
   def match
     @size = (@@pattern & @guess)
-    square
-
-  end
-  
-  def square
-    grid = Array.new(@size.length, "white")
     print "#{@size.length} match found"
   end
+
   
   def start
     i = 1
     
-    while i < 8
-      puts "put a number for the guess four times"
+    while i < 9
+      puts "put a number for the guess four times :TURN#{i}"
       @guess = [gets.chomp.to_i,gets.chomp.to_i,gets.chomp.to_i,gets.chomp.to_i]
-      p @guess
+      puts "your guess is #{@guess}"
       match
-
+      i +=1
     end
   end
   
