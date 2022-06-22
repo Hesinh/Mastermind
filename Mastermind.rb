@@ -2,7 +2,6 @@ class Mastermind
   a = (0..5).to_a.shuffle
   a.pop
   a.shift
-  @@chooses = [0,1, 2, 3, 4, 5]
   @@pattern = a
   private
   def initialize
@@ -11,10 +10,19 @@ class Mastermind
     p @@pattern
     start
   end
-  
+
   def match
     @size = (@@pattern & @guess)
-    print "#{@size.length} match found"
+    i = 0
+    test = 0
+    while i < 4
+      if @@pattern[i] == @guess[i]
+        test += 1
+      end
+      i += 1
+    end
+    puts "#{@size.length} match found"
+    puts "#{test} match are in the right position"
   end
 
   
