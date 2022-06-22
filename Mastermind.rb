@@ -1,7 +1,10 @@
 class Mastermind
+  a = (0..5).to_a.shuffle
+  a.pop
+  a.shift
   @@chooses = [0,1, 2, 3, 4, 5]
-  @@pattern = [rand(6).to_s, rand(6).to_s, rand(6).to_s, rand(6).to_s]
-    
+  @@pattern = a
+  private
   def initialize
     @guess
     p @@pattern
@@ -9,29 +12,29 @@ class Mastermind
   end
   
   def match
-    @try = (@@pattern & @guess)
-    print @try
+    @size = (@@pattern & @guess)
     square
 
   end
   
   def square
-    grid = Array.new(@try.length, "white")
+    grid = Array.new(@size.length, "white")
     print grid
   end
   
   def start
-    i = 0
+    i = 1
     
-    while i < 7
-      @guess = [gets.chomp,gets.chomp,gets.chomp,gets.chomp]
+    while i < 8
+      puts "put a number for the guess four times"
+      @guess = [gets.chomp.to_i,gets.chomp.to_i,gets.chomp.to_i,gets.chomp.to_i]
       p @guess
       match
-      puts "please, make an array with 4 numbers,separated with comma"
+
     end
   end
   
 end
 
 len = Mastermind.new
-len.match
+len
