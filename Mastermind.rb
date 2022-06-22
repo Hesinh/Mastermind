@@ -19,7 +19,7 @@ class Mastermind
   
   def square
     grid = Array.new(@size.length, "white")
-    print grid
+    print "#{@size.length} match found"
   end
   
   def start
